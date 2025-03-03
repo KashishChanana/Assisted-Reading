@@ -1,0 +1,19 @@
+{
+  "name": "assisted-reader-extension",
+  "version": "1.0.0",
+  "description": "A browser extension that brings the Assisted Reader functionality to any website",
+  "scripts": {
+    "build": "./manual_build.sh"
+  },
+  "keywords": [
+    "reading",
+    "bionic-reading",
+    "browser-extension",
+    "chrome-extension",
+    "firefox-addon"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+} 

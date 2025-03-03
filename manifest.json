@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Assisted Reader Extension",
-  "version": "1.0",
-  "description": "Extract content from any webpage and use the Assisted Reader to improve reading experience",
+  "version": "1.0.0",
+  "description": "Extract content from any webpage and use the Assisted Reader to improve reading experience with Bionic Reading and Progressive Highlighting",
+  "author": "Kashish Chanana",
+  "homepage_url": "https://github.com/KashishChanana/Assisted-Reading",
   "permissions": ["activeTab", "storage", "scripting"],
   "host_permissions": ["<all_urls>"],
   "background": {
@@ -16,6 +18,11 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "content_scripts": [
     {

@@ -32,16 +32,26 @@ else
   exit 1
 fi
 
-# Create placeholder icons
-echo "Creating placeholder icons..."
-echo '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="8" cy="8" r="5" fill="#ecf0f1"/><path d="M5,7 L11,7 M5,8 L11,8 M5,9 L11,9" stroke="#2c3e50" stroke-width="1" stroke-linecap="round"/></svg>' > build/icons/icon16.svg
-echo '<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="24" cy="24" r="16" fill="#ecf0f1"/><path d="M16,21 L32,21 M16,24 L32,24 M16,27 L32,27" stroke="#2c3e50" stroke-width="2" stroke-linecap="round"/></svg>' > build/icons/icon48.svg
-echo '<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="64" cy="64" r="42" fill="#ecf0f1"/><path d="M42,56 L86,56 M42,64 L86,64 M42,72 L86,72" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/></svg>' > build/icons/icon128.svg
-
-# Copy the SVG files as PNG files (browsers will accept SVG files)
-cp build/icons/icon16.svg build/icons/icon16.png
-cp build/icons/icon48.svg build/icons/icon48.png
-cp build/icons/icon128.svg build/icons/icon128.png
+# Copy icons
+echo "Copying icons..."
+if [ -d "icons" ]; then
+  cp icons/*.svg build/icons/
+  
+  # Convert SVG to PNG if needed (browsers will accept SVG files as is)
+  cp icons/icon16.svg build/icons/icon16.png
+  cp icons/icon48.svg build/icons/icon48.png
+  cp icons/icon128.svg build/icons/icon128.png
+else
+  echo "Warning: No icons directory found. Creating placeholder icons..."
+  echo '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="8" cy="8" r="5" fill="#ecf0f1"/><path d="M5,7 L11,7 M5,8 L11,8 M5,9 L11,9" stroke="#2c3e50" stroke-width="1" stroke-linecap="round"/></svg>' > build/icons/icon16.svg
+  echo '<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="24" cy="24" r="16" fill="#ecf0f1"/><path d="M16,21 L32,21 M16,24 L32,24 M16,27 L32,27" stroke="#2c3e50" stroke-width="2" stroke-linecap="round"/></svg>' > build/icons/icon48.svg
+  echo '<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#3498db"/><circle cx="64" cy="64" r="42" fill="#ecf0f1"/><path d="M42,56 L86,56 M42,64 L86,64 M42,72 L86,72" stroke="#2c3e50" stroke-width="4" stroke-linecap="round"/></svg>' > build/icons/icon128.svg
+  
+  # Copy the SVG files as PNG files
+  cp build/icons/icon16.svg build/icons/icon16.png
+  cp build/icons/icon48.svg build/icons/icon48.png
+  cp build/icons/icon128.svg build/icons/icon128.png
+fi
 
 # Copy the JavaScript files
 cp popup.js build/

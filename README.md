@@ -16,25 +16,42 @@ A browser extension that brings the Assisted Reader functionality to any website
 - Reading progress tracking
 - Estimated reading time display
 - Pause, reset, and completion controls
+- Celebration animation on completion
 
 ## Installation
 
 ### Chrome/Edge/Brave
 
 1. Clone or download this repository
-2. Run `node build.js` to prepare the extension
+   ```
+   git clone https://github.com/KashishChanana/Assisted-Reading.git
+   cd Assisted-Reading
+   ```
+
+2. Build the extension
+   ```
+   ./manual_build.sh
+   ```
+   
+   Alternatively, if you have npm installed:
+   ```
+   npm run build
+   ```
+
 3. Open Chrome and navigate to `chrome://extensions/`
 4. Enable "Developer mode" in the top-right corner
-5. Click "Load unpacked" and select the directory containing this extension
+5. Click "Load unpacked" and select the `build` directory
 6. The extension icon should appear in your browser toolbar
 
 ### Firefox
 
+*Note: This extension is primarily designed for Chromium-based browsers. Firefox support may require additional modifications.*
+
 1. Clone or download this repository
-2. Run `node build.js` to prepare the extension
+2. Build the extension using `./manual_build.sh`
 3. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
 4. Click "Load Temporary Add-on..."
-5. Select the `manifest.json` file in the extension directory
+5. Select the `manifest.json` file in the `build` directory
 6. The extension icon should appear in your browser toolbar
 
 ## Usage
@@ -45,15 +62,28 @@ A browser extension that brings the Assisted Reader functionality to any website
    - Selected Text: First select text on the page, then use this option
    - Main Content: Automatically extracts the main article content
    - Full Page: Extracts all text from the page
-4. Click "Start Reading"
-5. Choose your preferred reading mode and speed
-6. Click "Start Reading" again to begin
-7. Use the floating controls to pause or reset your reading session
-8. Click "Mark as Complete" when you're done
+4. Choose your preferred reading mode and speed
+5. Click "Extract Content" to begin
+6. Use the floating controls to pause or reset your reading session
+7. Click "Mark as Complete" when you're done
 
-## How It Works
+## Project Structure
 
-The extension injects a reader interface into the current webpage, allowing you to read content with enhanced reading modes without leaving the site. The reader interface is isolated from the page's styles and scripts, ensuring a consistent reading experience across all websites.
+- `manifest.json` - Extension configuration
+- `popup.html` & `popup.js` - Extension popup interface
+- `content.js` & `content.css` - Content scripts injected into web pages
+- `reader.js` & `reader.css` - Reader functionality and styling
+- `background.js` - Background script for extension events
+- `manual_build.sh` - Build script to prepare the extension
+
+## Troubleshooting
+
+If the extension doesn't work as expected:
+
+1. Make sure you've refreshed the page after installing the extension
+2. Check the browser console for any error messages
+3. Try reloading the extension from the extensions page
+4. If content extraction fails, try a different extraction method
 
 ## License
 
